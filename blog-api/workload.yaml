@@ -1,0 +1,30 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: blog-api
+
+endpoints:
+  - name: http
+    type: HTTP
+    port: 9090
+    basePath: /
+    visibility:
+      - project
+      - internal
+      - external
+
+dependencies:
+  resources:
+    - ref: simplest-crud-blog-blog-db
+      envBindings:
+        dbname: BLOG_DB_DBNAME
+        host: BLOG_DB_HOST
+        password: BLOG_DB_PASSWORD
+        port: BLOG_DB_PORT
+        user: BLOG_DB_USER
+    - ref: simplest-crud-blo-757a146f
+      envBindings:
+        client_id: USER_AUTH_CLIENT_ID
+        issuer: USER_AUTH_ISSUER
+        jwks_url: USER_AUTH_JWKS_URL
+        resource: USER_AUTH_RESOURCE
+        scopes: USER_AUTH_SCOPES
