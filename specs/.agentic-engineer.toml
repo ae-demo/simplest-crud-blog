@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "simplest-crud-blog"
+createdAt = "2026-09-19T07:13:27Z"
+idea = "simplest crud blog. two web apps guest and admin, both share same idp, no api calls other to outside stuff"
