@@ -1,0 +1,17 @@
+{
+  "name": "blog-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "blog-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "blog-db", "resourceType": "postgres-cnpg", "parameters": { "instances": 1, "storage": "1Gi", "version": "16" } },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "Backs both blog web apps: stores and serves posts and comments in Postgres. Owns the posts and comments resources, enforces the permission scopes on every operation, and verifies the gateway's signed assertion. Does not send notifications and calls no external service.",
+  "stories": [],
+  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+}

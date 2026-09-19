@@ -1,0 +1,50 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "posts",
+      "component": "blog-api",
+      "description": "Blog posts",
+      "actions": [
+        { "handle": "read", "description": "Every published post" },
+        { "handle": "create", "description": "Create a new post" },
+        { "handle": "update", "description": "Edit an existing post" },
+        { "handle": "delete", "description": "Delete a post" }
+      ]
+    },
+    {
+      "resource": "comments",
+      "component": "blog-api",
+      "description": "Comments left on posts",
+      "actions": [
+        { "handle": "read", "description": "Every comment on a post" },
+        { "handle": "create", "description": "Add a comment to a post" },
+        { "handle": "delete", "description": "Remove any comment" }
+      ]
+    }
+  ],
+  "groups": [
+    { "name": "Guests", "description": "Signed-in readers who browse posts and leave comments" },
+    { "name": "BlogAdmins", "description": "The blog's administrators, who manage posts and moderate comments" }
+  ],
+  "roles": [
+    {
+      "name": "Guest",
+      "description": "Browses published posts and leaves comments.",
+      "stories": [1, 2, 3, 4, 5],
+      "grants": ["posts:read", "comments:read", "comments:create"],
+      "assignTo": ["Guests"]
+    },
+    {
+      "name": "Admin",
+      "description": "Creates, edits and deletes posts, and moderates comments.",
+      "stories": [6, 7, 8, 9, 10, 11],
+      "grants": ["posts:read", "posts:create", "posts:update", "posts:delete", "comments:read", "comments:delete"],
+      "assignTo": ["BlogAdmins"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-guest", "roles": ["Guest"] },
+    { "username": "test-admin", "roles": ["Admin"] }
+  ]
+}

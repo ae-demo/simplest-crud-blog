@@ -1,0 +1,18 @@
+title simplest-crud-blog
+
+component guest-webapp as "Guest Blog" web-application
+component admin-webapp as "Admin Blog" web-application
+component blog-api as "Blog API" service
+component blog-db as "Blog Database" database
+
+east user-auth as "Thunder Auth" identity-server
+
+north -> guest-webapp
+north -> admin-webapp
+
+guest-webapp -> blog-api
+guest-webapp -> user-auth
+admin-webapp -> blog-api
+admin-webapp -> user-auth
+blog-api -> user-auth
+blog-api -> blog-db
