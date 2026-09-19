@@ -7,11 +7,50 @@
   "appPath": "guest-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "blog-api", "description": "Lists and reads posts, reads and creates comments." },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5
   ],
   "description": "The guest-facing single-page app: signed-in guests browse published posts, read one in full, and leave comments. Does not create, edit or delete posts, and does not moderate comments.",
-  "stories": [1, 2, 3, 4, 5],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "blog-api",
+      "description": "Lists and reads posts, reads and creates comments.",
+      "wiring": {
+        "endpoint": {
+          "component": "simplest-crud-blog-blog-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "BLOG_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "simplest-crud-blo-757a146f",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
