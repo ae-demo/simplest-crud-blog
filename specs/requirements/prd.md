@@ -24,26 +24,26 @@ and can remove comments.
 ## User Stories
 
 1. As a guest, I want to sign in through the shared identity provider, so that
- I can access the blog.
+I can access the blog.
 2. As a guest, I want to see a list of published posts, so that I can browse
- what's available.
+what's available.
 3. As a guest, I want to open a post and read its full content, so that I can
- consume it.
+consume it.
 4. As a guest, I want to see the comments on a post, so that I can read the
- discussion around it.
+discussion around it.
 5. As a guest, I want to add a comment to a post, so that I can share my
- thoughts.
+thoughts.
 6. As an admin, I want to sign in through the shared identity provider, so
- that I can manage the blog.
+that I can manage the blog.
 7. As an admin, I want to create a new post, so that I can publish content.
 8. As an admin, I want to edit an existing post, so that I can correct or
- update it.
+update it.
 9. As an admin, I want to delete a post, so that I can remove content that no
- longer belongs on the blog.
+longer belongs on the blog.
 10. As an admin, I want to see all posts in one place, so that I can manage
- the blog's content.
+the blog's content.
 11. As an admin, I want to remove a comment, so that I can moderate content
- guests have left.
+guests have left.
 
 ## Product Decisions
 
@@ -57,10 +57,9 @@ and their own data.
 per-author ownership or multiple admin accounts. *assumed*
 - **Post model**: a post has a title and body only, and is visible to guests
 as soon as it is created — there is no draft/published state or scheduling.
-*assumed*
 - **Comments**: a signed-in guest can add a comment to a post, identified by
 their signed-in identity; guests cannot edit or delete their own comments
-once posted — only the admin can remove a comment. *assumed*
+once posted — only the admin can remove a comment.
 
 ## Out of Scope
 
